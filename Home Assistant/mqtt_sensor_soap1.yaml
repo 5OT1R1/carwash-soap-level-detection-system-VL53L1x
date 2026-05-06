@@ -1,0 +1,49 @@
+sensor:
+  ###################################################
+  ############### SOAP Container 1 ##################
+  ###################################################
+  # ---- Soap1 Distance (raw mm) ----
+  - name: "Soap1 Distance (mm)"
+    state_topic: "soap_sensor/soap1/distance_mm"
+    unique_id: "soap1_distance_mm"
+    object_id: "soap1_distance_mm"
+    unit_of_measurement: "mm"
+    value_template: "{{ value | float(0) | round(0) }}"
+    # no device_class so HA won't convert it
+
+  # ---- Soap1 Distance (cm) ----
+  - name: "Soap1 Distance (cm)"
+    state_topic: "soap_sensor/soap1/distance_cm"
+    unique_id: "soap1_distance_cm"
+    object_id: "soap1_distance_cm"
+    unit_of_measurement: "cm"
+    value_template: "{{ value | float(0) | round(1) }}"
+    # leave device_class off to avoid HA converting cm->in automatically
+
+  # ---- Soap1 Distance (in) ----
+  - name: "Soap1 Distance (in)"
+    state_topic: "soap_sensor/soap1/distance_in"
+    unique_id: "soap1_distance_in"
+    object_id: "soap1_distance_in"
+    unit_of_measurement: "in"
+    value_template: "{{ value | float(0) | round(2) }}"
+    # no device_class so HA shows exactly what ESP publishes
+
+  # ---- Soap1 Level (%) ----
+  - name: "Soap1 Percentage"
+    state_topic: "soap_sensor/soap1/percent"
+    unique_id: "soap1_percentage"
+    object_id: "soap1_percentage"
+    unit_of_measurement: "%"
+    value_template: "{{ value | float(0) | round(1) }}"
+    icon: mdi:cup-water
+    device_class: battery
+
+  # ---- Soap1 Gallons ----
+  - name: "Soap1 Gallons"
+    state_topic: "soap_sensor/soap1/gallons"
+    unique_id: "soap1_gallons"
+    object_id: "soap1_gallons"
+    unit_of_measurement: "gal"
+    value_template: "{{ value | float(0) | round(2) }}"
+    icon: mdi:beaker-outline
